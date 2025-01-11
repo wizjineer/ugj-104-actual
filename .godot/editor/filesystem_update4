@@ -1,2 +1,11 @@
-res://scenes/main.tscn
 res://scenes/player.tscn
+res://scripts/node.gd
+res://scenes/ship_part.gd
+res://scenes/ship_part.tscn
+res://ship_part.gd
+res://scripts/ship_part.gd
+res://scenes/main.tscn
+res://recources/ship_part.tres
+res://recources/Resource_item.gd
+res://scripts/enemy.gd
+res://scenes/enemy.tscn
