@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc3tdaeyvu500"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_0pnjp"]
+[ext_resource type="Texture2D" uid="uid://d2sytqm4qohh1" path="res://icon.svg" id="1_2lefj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnaip"]
+size = Vector2(125, 127)
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_0pnjp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2lefj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_hnaip")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="dash_cooldown" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
