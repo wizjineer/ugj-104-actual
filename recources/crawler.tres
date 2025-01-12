@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://1286npfngbs5"]
+
+[ext_resource type="Script" path="res://scripts/BaseEnemyResource.gd" id="1_0qsh7"]
+[ext_resource type="Texture2D" uid="uid://d2sytqm4qohh1" path="res://icon.svg" id="2_uvvis"]
+
+[resource]
+script = ExtResource("1_0qsh7")
+texture = ExtResource("2_uvvis")
+health = 5
+dammadge = 1

@@ -7,6 +7,8 @@ var has_double_jumped = false
 const DASH_SPEED = 900.0
 var dashing = false
 var can_dash = true
+@export var health: int
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -42,3 +44,6 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_dash_cooldown_timeout() -> void:
 	can_dash = true # Replace with function body.
+
+func dammadge(dammadge: int):
+	health -= dammadge
