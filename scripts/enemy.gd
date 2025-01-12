@@ -10,6 +10,7 @@ var direction: int = 1
 @onready var sprite = $Sprite2D
 var health: int
 var damage: int
+var attacked = false
 
 func _ready() -> void:
 	sprite.texture = resource.texture
@@ -18,8 +19,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# Apply gravity if not on the floor
-	if not is_on_floor():
-		velocity.y += lerp(velocity.y, gravity * delta, 0.6)
+	gravity_func()
 		
 	# Set horizontal movement
 	velocity.x = direction * speed
@@ -29,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Check if hitting a wall or leaving the platform
 	_direction_change()
+
 
 func update_raycast_position():
 	# Update the cast_to property of RayCast2D to match the direction
@@ -46,3 +47,11 @@ func take_damage(amount: int) -> void:
 
 func _die() -> void:
 	queue_free()
+
+func gravity_func():
+	if not is_on_floor() and not is_on_wall() and not is_on_ceiling():
+		velocity.y += lerp(velocity.y, gravity * get_process_delta_time(), 0.6)
+	
+
+func _on_imunity_timer_timeout() -> void:
+	attacked = false

@@ -1,10 +1,10 @@
 res://scenes/main.tscn
-res://scenes/player.tscn
-res://scenes/enemy.tscn
 res://scripts/BaseEnemyResource.gd
-res://recources/crawler.tres
-res://scripts/enemy.gd
-res://scripts/player.gd
-res://scripts/climber.gd
+res://scenes/player.tscn
 res://scenes/crawler.tscn
-res://scenes/crawler.gd
+res://scripts/player.gd
+res://scripts/enemy.gd
+res://scenes/enemy.tscn
+res://scripts/area_2d.gd
+res://recources/crawler.tres
+res://scripts/crawler.gd

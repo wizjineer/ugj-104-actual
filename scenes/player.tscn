@@ -1,10 +1,74 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc3tdaeyvu500"]
+[gd_scene load_steps=9 format=3 uid="uid://dc3tdaeyvu500"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0pnjp"]
 [ext_resource type="Texture2D" uid="uid://d2sytqm4qohh1" path="res://icon.svg" id="1_2lefj"]
+[ext_resource type="Script" path="res://scripts/area_2d.gd" id="3_5qym2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnaip"]
 size = Vector2(125, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqdah"]
+size = Vector2(38, 129)
+
+[sub_resource type="Animation" id="Animation_4nqu4"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(81, -70), Vector2(84, 47)]
+}
+
+[sub_resource type="Animation" id="Animation_1cuac"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(81, -70)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rxtep"]
+_data = {
+"RESET": SubResource("Animation_1cuac"),
+"new_animation": SubResource("Animation_4nqu4")
+}
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_0pnjp")
@@ -20,11 +84,32 @@ shape = SubResource("RectangleShape2D_hnaip")
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
-[node name="dash_timer" type="Timer" parent="."]
+[node name="attack_durashan" type="Timer" parent="."]
 wait_time = 0.2
 
-[node name="dash_cooldown" type="Timer" parent="."]
+[node name="attack_cooldown" type="Timer" parent="."]
 wait_time = 5.0
 
-[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
-[connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_5qym2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(83, 1.5)
+shape = SubResource("RectangleShape2D_kqdah")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rxtep")
+}
+
+[node name="Icon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(81, -70)
+scale = Vector2(0.28125, 1)
+texture = ExtResource("1_2lefj")
+
+[connection signal="timeout" from="attack_durashan" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

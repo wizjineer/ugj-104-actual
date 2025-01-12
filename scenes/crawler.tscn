@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bbo3in8w2wwqp"]
 
-[ext_resource type="Script" path="res://scenes/crawler.gd" id="1_vsyoy"]
+[ext_resource type="Script" path="res://scripts/crawler.gd" id="1_vsyoy"]
 [ext_resource type="Resource" uid="uid://1286npfngbs5" path="res://recources/crawler.tres" id="2_87qxe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_28syc"]
@@ -19,3 +19,9 @@ target_position = Vector2(3, 110)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_28syc")
+
+[node name="left" type="RayCast2D" parent="."]
+target_position = Vector2(-164, -1)
+
+[node name="right" type="RayCast2D" parent="." groups=["enemies"]]
+target_position = Vector2(182, 0)

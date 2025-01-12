@@ -1,11 +1,12 @@
+Timer
+AnimationPlayer
 CollisionShape2D
-CollisionPolygon2D
-Polygon2D
-RayCast2D
 Area2D
 Node
+RayCast2D
+CollisionPolygon2D
+Polygon2D
 Sprite2D
 CharacterBody2D
 StaticBody2D
-Timer
 Camera2D
