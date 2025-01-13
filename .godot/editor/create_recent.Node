@@ -1,6 +1,7 @@
+ProgressBar
+CollisionShape2D
 Timer
 AnimationPlayer
-CollisionShape2D
 Area2D
 Node
 RayCast2D

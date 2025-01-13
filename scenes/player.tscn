@@ -70,8 +70,9 @@ _data = {
 "new_animation": SubResource("Animation_4nqu4")
 }
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["players"]]
 script = ExtResource("1_0pnjp")
+health = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_2lefj")
@@ -107,6 +108,13 @@ visible = false
 position = Vector2(81, -70)
 scale = Vector2(0.28125, 1)
 texture = ExtResource("1_2lefj")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -549.0
+offset_top = -311.0
+offset_right = 536.0
+offset_bottom = -267.0
+max_value = 5.0
 
 [connection signal="timeout" from="attack_durashan" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="attack_durashan" to="." method="_on_attack_durashan_timeout"]

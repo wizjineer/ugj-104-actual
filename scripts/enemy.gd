@@ -58,3 +58,10 @@ func gravity_func():
 
 func _on_imunity_timer_timeout() -> void:
 	attacked = false
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("players"):
+		var knockback_dir = (global_position - body.global_position).normalized()
+		var knockback_strength = 300.0
+		body.take_damage(1, knockback_dir, knockback_strength)
