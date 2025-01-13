@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
+const BURST_VELOCITY = -600.0
 var has_double_jumped = false
 
 const DASH_SPEED = 900.0
@@ -40,12 +41,17 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 			has_double_jumped = true
 	# Get the input direction and handle the movement/deceleration.
-	var direction := Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * SPEED
+	if is_on_wall():
+		if Input.is_action_pressed("jump"):
+			velocity.y = -1 * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		var direction := Input.get_axis("left", "right")
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
+			
 	# Apply knockback force.
 	velocity += knockback_force * delta
 
@@ -60,6 +66,8 @@ func _physics_process(delta: float) -> void:
 		if body.is_in_group("enemies"):
 			if attacking:
 				body.take_damage(2)
+				if $Area2D.is_facing_down():
+					velocity.y = BURST_VELOCITY
 
 func take_damage(amount: int, knockback_dir: Vector2, knockback_strength: float):
 	# Reduce health
@@ -77,6 +85,8 @@ func take_damage(amount: int, knockback_dir: Vector2, knockback_strength: float)
 		if body.is_in_group("enemies"):
 			if attacking:
 				body.take_damage(2)
+				if $Area2D.is_facing_down():
+					velocity.y = JUMP_VELOCITY
 
 func _on_attack_durashan_timeout() -> void:
 	attacking = false

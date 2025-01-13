@@ -21,3 +21,6 @@ func _process(delta: float) -> void:
 		#scale.x = -1  # Flip sprite horizontally
 	#else:
 		#scale.x = 1  # Face forward (not flipped)
+
+func is_facing_down() -> bool:
+	return rotation > deg_to_rad(135) or rotation < deg_to_rad(-135)
