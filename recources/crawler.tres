@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("1_0qsh7")
 texture = ExtResource("2_uvvis")
-health = 1
+health = 5
 dammadge = 1

@@ -2,9 +2,7 @@ res://scenes/main.tscn
 res://scripts/BaseEnemyResource.gd
 res://scenes/player.tscn
 res://scenes/crawler.tscn
-res://scripts/player.gd
-res://scripts/enemy.gd
 res://scenes/enemy.tscn
-res://scripts/area_2d.gd
+res://scripts/player.gd
 res://recources/crawler.tres
-res://scripts/crawler.gd
+res://scripts/enemy.gd

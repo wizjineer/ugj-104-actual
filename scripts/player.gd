@@ -16,7 +16,7 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("attack"):
 		attacking = true
 		cooldown = true
-		$AnimationPlayer.play("new_animation")
+		attack = true
 		$attack_cooldown.start()
 		$attack_durashan.start()
 		
@@ -53,9 +53,11 @@ func _physics_process(delta: float) -> void:
 	
 	for body in overlaping_bodies:
 		if body.is_in_group("enemies"):
-			body.take_damage(2)
-		
-	 
+			if attacking:
+				body.take_damage(2)
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func _on_attack_durashan_timeout() -> void:
+	attacking = false
+
+func _on_attack_cooldown_timeout() -> void:
 	attack = false

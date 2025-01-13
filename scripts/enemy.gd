@@ -41,9 +41,12 @@ func _direction_change():
 		update_raycast_position()
 
 func take_damage(amount: int) -> void:
-	health -= amount
-	if health <= 0:
-		_die()
+	if !attacked:
+		health -= amount
+		if health <= 0:
+			_die()
+		attacked = true
+		$imunity_timer.start()
 
 func _die() -> void:
 	queue_free()
