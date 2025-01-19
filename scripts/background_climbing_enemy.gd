@@ -7,7 +7,7 @@ const Speed = 200
 
 func _physics_process(delta: float) -> void:
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
-	velocity = dir * Speed * delta
+	velocity = dir * Speed
 	move_and_slide()
 	
 	

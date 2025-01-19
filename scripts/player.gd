@@ -36,21 +36,16 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y = lerp(velocity.y, 0.0, 0.6)
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
+		if is_on_floor() or is_on_wall():
 			velocity.y = JUMP_VELOCITY
 		elif !has_double_jumped:
 			velocity.y = JUMP_VELOCITY
 			has_double_jumped = true
-	# Get the input direction and handle the movement/deceleration.
-	if is_on_wall():
-		if Input.is_action_pressed("jump"):
-			velocity.y = -1 * SPEED
+	var direction := Input.get_axis("left", "right")
+	if direction:
+		velocity.x = direction * SPEED
 	else:
-		var direction := Input.get_axis("left", "right")
-		if direction:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 			
 	# Apply knockback force.

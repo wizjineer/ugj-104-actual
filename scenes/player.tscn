@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dc3tdaeyvu500"]
+[gd_scene load_steps=10 format=3 uid="uid://dc3tdaeyvu500"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0pnjp"]
 [ext_resource type="Texture2D" uid="uid://d2sytqm4qohh1" path="res://icon.svg" id="1_2lefj"]
 [ext_resource type="Script" path="res://scripts/area_2d.gd" id="3_5qym2"]
+[ext_resource type="AudioStream" uid="uid://dimlpei0eau72" path="res://Alien Invasion.mp3" id="4_egydr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnaip"]
 size = Vector2(125, 127)
@@ -116,9 +117,15 @@ position = Vector2(81, -70)
 scale = Vector2(0.28125, 1)
 texture = ExtResource("1_2lefj")
 
-[connection signal="timeout" from="attack_durashan" to="." method="_on_dash_timer_timeout"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_egydr")
+volume_db = 5.0
+autoplay = true
+parameters/looping = true
+
 [connection signal="timeout" from="attack_durashan" to="." method="_on_attack_durashan_timeout"]
-[connection signal="timeout" from="attack_cooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="attack_durashan" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

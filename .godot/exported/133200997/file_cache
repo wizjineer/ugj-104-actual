@@ -1,0 +1,11 @@
+res://assets/tileset_termite.tres::ecefb91045fbc8135dd727ae3c0241fb::1737298190::res://.godot/exported/133200997/export-7c01fa07280e69705fbcba56747baf1d-tileset_termite.res
+res://recources/crawler.tres::b6120a77676b01e22e46577e3870f475::1736794186::res://.godot/exported/133200997/export-899d6eb920e7f4afbb6afd65b8647c2b-crawler.res
+res://scenes/area_2d.tscn::43062d3e8f14f2429ebc99a6c30b9254::1737300591::res://.godot/exported/133200997/export-a161eb632a9072708875776a59811a68-area_2d.scn
+res://scenes/background_climbing_enemy.tscn::c36807a1a9c04ee7fa6ec8c35a1b1677::1737300591::res://.godot/exported/133200997/export-0604ab3c3f27a420bab25e65e2479ad0-background_climbing_enemy.scn
+res://scenes/basic_level.tscn::7e2638b44bb66573fe2d7aadc710954e::1737300591::res://.godot/exported/133200997/export-bb18512a593f28965424aef41ae0d899-basic_level.scn
+res://scenes/crawler.tscn::38e6ff52d59572c3b4e9bea7afe395aa::1736798020::res://.godot/exported/133200997/export-3ad63c3ace50295c0a3bdd63fed1ba13-crawler.scn
+res://scenes/enemy.tscn::618710a2da3e4a3fcc227b8d0dddaa6f::1737300591::res://.godot/exported/133200997/export-a930820ec0ab16db6719aff4daa500f9-enemy.scn
+res://scenes/enemy_spawner.tscn::02617197a694686f70490faea1232320::1737300591::res://.godot/exported/133200997/export-e56eb753f9e7a01522dd85211d4eb598-enemy_spawner.scn
+res://scenes/main.tscn::0e90def86091dda9aff113c5ee3f05b9::1737300591::res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn
+res://scenes/player.tscn::816f397b52c510f224af9799bc773851::1737300591::res://.godot/exported/133200997/export-234fb6894ec6226e856ab7f825500d3d-player.scn
+res://default_bus_layout.tres::ffc05b55378cabe02540444844d16ce9::1737300299::res://.godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res

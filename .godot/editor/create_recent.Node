@@ -1,3 +1,6 @@
+ColorRect
+AudioStreamPlayer2D
+AudioStreamPlayer
 CollisionShape2D
 Area2D
 Node
@@ -5,10 +8,7 @@ Timer
 NavigationAgent2D
 Sprite2D
 CharacterBody2D
-ColorRect
 TileMap
 TileMapLayer
 ProgressBar
 AnimationPlayer
-RayCast2D
-CollisionPolygon2D
