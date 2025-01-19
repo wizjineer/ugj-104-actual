@@ -1,26 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://barvx0f27x1o2"]
+[gd_scene load_steps=4 format=3 uid="uid://barvx0f27x1o2"]
 
 [ext_resource type="PackedScene" uid="uid://biqwql2rti2gx" path="res://scenes/enemy.tscn" id="1_1idks"]
 [ext_resource type="PackedScene" uid="uid://dc3tdaeyvu500" path="res://scenes/player.tscn" id="1_15uyn"]
+[ext_resource type="TileSet" uid="uid://cus1r1u34v0x8" path="res://assets/tileset_termite.tres" id="3_depur"]
 
 [node name="main" type="Node2D"]
+
+[node name="enemy2" parent="." instance=ExtResource("1_1idks")]
+position = Vector2(992, 150)
 
 [node name="enemy" parent="." instance=ExtResource("1_1idks")]
 position = Vector2(1909, -249)
 
-[node name="enemy" parent="enemy" instance=ExtResource("1_1idks")]
-position = Vector2(-917, 399)
-
 [node name="player" parent="." instance=ExtResource("1_15uyn")]
 position = Vector2(1425, -261)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-73, 11)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(162, 0)
-polygon = PackedVector2Array(282, -66, 278, 214, 791, 214, 1042, 214, 1042, -155, 2136, -138, 2139, 431, 27, 389, 42, -68)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(-1473, 200)
-polygon = PackedVector2Array(208, -46, 669, -130, 1221, -67, 605, -235)
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("3_depur")
+format = 2

@@ -49,6 +49,7 @@ func take_damage(amount: int) -> void:
 		$imunity_timer.start()
 
 func _die() -> void:
+	ShipPieces.add_piece()
 	queue_free()
 
 func gravity_func():

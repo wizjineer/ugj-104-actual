@@ -1,21 +1,22 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 500.0
 const JUMP_VELOCITY = -500.0
-const BURST_VELOCITY = -600.0
+const BURST_VELOCITY = -400.0
 var has_double_jumped = false
 
 const DASH_SPEED = 900.0
-var dashing = false
+var dashing = false 
 var can_dash = true
 @export var health: int
 var attacking = false
 var cooldown = false
 var attack = false
 var knockback_force: Vector2 = Vector2.ZERO 
+var pieces = 0
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_pressed("attack"):
+	if event.is_action_pressed("attack"):
 		attacking = true
 		cooldown = true
 		attack = true
@@ -24,7 +25,7 @@ func _input(event: InputEvent) -> void:
 		
 	
 func _physics_process(delta: float) -> void:
-	$ProgressBar.value = health
+	$Camera2D/ProgressBar.value = health
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -66,7 +67,7 @@ func _physics_process(delta: float) -> void:
 		if body.is_in_group("enemies"):
 			if attacking:
 				body.take_damage(2)
-				if $Area2D.is_facing_down():
+				if $Area2D. is_facing_down():
 					velocity.y = BURST_VELOCITY
 
 func take_damage(amount: int, knockback_dir: Vector2, knockback_strength: float):
